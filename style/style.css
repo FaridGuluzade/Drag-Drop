@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+section {
+  position: relative;
+  margin: 30px;
+}
+
+section .drop-target {
+  height: 300px;
+  width: 300px;
+  float: left;
+  margin: 250px;
+}
+
+section .drag-item {
+  height: 50px;
+  width: 50px;
+}
+
+section .drag-item:hover {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+section .drag-item:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=style.css.map */
