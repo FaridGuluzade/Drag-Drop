@@ -1,3 +1,8 @@
+:root {
+  --width: 50px;
+  --height: 50px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,31 +10,66 @@
           box-sizing: border-box;
 }
 
-section {
-  position: relative;
-  margin: 30px;
+body {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(11, 143, 152, 0.803)), to(rgba(238, 7, 69, 0.743)));
+  background-image: linear-gradient(rgba(11, 143, 152, 0.803), rgba(238, 7, 69, 0.743));
+  height: 100vh;
 }
 
-section .drop-target {
+.flex-second {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-second .drop-target {
+  position: relative;
   height: 300px;
   width: 300px;
-  float: left;
   margin: 250px;
 }
 
-section .drag-item {
-  height: 50px;
-  width: 50px;
+.drag-item {
+  float: left;
+  height: var(--height);
+  width: var(--width);
+  position: absolute;
 }
 
-section .drag-item:hover {
+.drag-item:hover {
   cursor: -webkit-grab;
   cursor: grab;
 }
 
-section .drag-item:active {
+.drag-item:active {
   cursor: -webkit-grabbing;
   cursor: grabbing;
   border-radius: 50%;
+}
+
+.item1 {
+  left: calc(45% - var(--width));
+  top: 0;
+}
+
+.item2 {
+  left: calc(50% - var(--width));
+  top: 0;
+}
+
+.item3 {
+  left: calc(55% - var(--width));
+  top: 0;
+}
+
+.item4 {
+  left: calc(60% - var(--width));
+  top: 0;
 }
 /*# sourceMappingURL=style.css.map */

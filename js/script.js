@@ -4,34 +4,29 @@ const dropTargets= document.querySelectorAll(".drop-target");
 
 
 
+let startInnerX;
+let startInnerY;
+
 
 dragItems.forEach((dragItem, index)=>{
     dragItem.addEventListener("dragstart", function(event){
         event.dataTransfer.setData(`dragItemId`, event.target.id);
-        event.target.style.opacity="0.4";
-
+      
+        startInnerX= event.offsetX;
+        startInnerY=event.offsetY;
     });
-    dragItem.addEventListener("mousedown", ()=>{
-        dragItem.style.zIndex= "1";
-        dragItems.forEach((item, i) => {
-            if (i !== index) {
-                dragItems[i].style.zIndex="0";
-            }
-        });
+    // dragItem.addEventListener("mousedown", ()=>{
+    //     dragItem.style.zIndex= "1";
+    //     dragItems.forEach((item, i) => {
+    //         if (i !== index) {
+    //             dragItems[i].style.zIndex="0";
+    //         }
+    //     });
 
-    });
+    // });
    
 
 });
-
-
-
-dropTargets.forEach((dropTarget, index) => {
-    dropTarget.addEventListener("dragend", (event) => {
-        dropTarget.style.opacity="1"; 
-    });
-});
-
 
 
 
@@ -40,34 +35,39 @@ dropTargets.forEach((dropTarget, index) => {
         dropTarget.style.border="3px dotted green"
        
     });
-});
-
-
-
-dropTargets.forEach((dropTarget, index) => {
     dropTarget.addEventListener("dragleave", (event) => {
         dropTarget.style.border="";
        
     });
-});
-
-
-
-
-
-dropTargets.forEach((dropTarget, index) => {
     dropTarget.addEventListener("dragover", (event) => {
         event.preventDefault();
+
+       
     });
 });
+
+
+ 
 
 dropTargets.forEach((dropTarget, index) => {
     dropTarget.addEventListener("drop", (event) => {
         event.preventDefault();
+     
         dropTarget.style.border="";
+
+
        
-        const data= event.dataTransfer.getData("dragItemId");
-        event.target.appendChild(document.getElementById(data));
+        const dataId = event.dataTransfer.getData("dragItemId");
+        const data = document.getElementById(dataId);
+      
+        event.target.appendChild(data);
+
+        let offsetX = `${event.offsetX -startInnerX}px`;
+        let offsetY = `${event.offsetY -startInnerY}px`;
+
+        data.style.left = offsetX;
+        data.style.top = offsetY;
+
     });
 });
 
